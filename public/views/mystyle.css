@@ -1,0 +1,20 @@
+body {
+  text-align: center;
+  background-color: grey;
+}
+
+.highlightBad {
+  background-color: darkred;
+}
+
+.highlightGood {
+  background-color: green;
+}
+
+.normal {
+  background-color: white;
+}
+
+.invalid {
+  color: darkred;
+}
