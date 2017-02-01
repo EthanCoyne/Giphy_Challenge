@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>API Lecture</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="/scripts/client.js"></script>
+  </head>
+  <body ng-app="giphyApp">
+    <main ng-controller="giphyController as giphyCtrl">
+      <h1>GIFS!</h1>
+
+      <button ng-click="giphyCtrl.randomGIF()">Random!</button>
+      <img ng-show="giphyCtrl.imageURL" ng-src="{{giphyCtrl.imageURL}}" alt="A Random Gif">
+
+      <form name="searchForm">
+        <input type="text" ng-model="giphyCtrl.searchTerm" placeholder="search term" />
+        <button ng-click="giphyCtrl.searchGIF()">Search!</button>
+      </form>
+    </main>
+  </body>
+</html>
