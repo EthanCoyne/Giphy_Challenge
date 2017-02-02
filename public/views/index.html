@@ -5,6 +5,7 @@
     <title>API Lecture</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="/scripts/client.js"></script>
+    <script src="/scripts/giphy-service.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="/views/mystyle.css">
   </head>
   <body ng-app="giphyApp">
@@ -15,7 +16,7 @@
 
       <form name="searchForm">
         <input type="text" ng-model="giphyCtrl.searchTerm" placeholder="search term" ng-focus="highlight=true" ng-blur="highlight=false" required/>
-        <button ng-disabled="searchForm.$invalid" ng-click="giphyCtrl.searchGIF()" ng-class="{'highlightBad':highlight==true && searchForm.$invalid,'highlightGood':highlight==true && searchForm.$valid, 'normal':highlight==false}">Search!</button>
+        <button ng-disabled="searchForm.$invalid" ng-click="giphyCtrl.searchGIF(giphyCtrl.searchTerm)" ng-class="{'highlightBad':highlight==true && searchForm.$invalid,'highlightGood':highlight==true && searchForm.$valid, 'normal':highlight==false}">Search!</button>
       </form>
       <p class="invalid" ng-show="searchForm.$invalid && highlight==true">
         Fill in the search box Dummy!
