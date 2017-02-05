@@ -27,6 +27,7 @@ app.controller('giphyController', function(GiphyService){
 
 
   var ctrl = this;
+  ctrl.favGIF = {};
   // ctrl.searchTerm = '';
 
 
@@ -54,5 +55,8 @@ app.controller('giphyController', function(GiphyService){
       'url': gifUrl
     }
     console.log("favorited object: ", ctrl.favGIF);
+
+    GiphyService.favoriteThisGIF(ctrl.favGIF);
+
   }
 }); // end giphyController

@@ -18,7 +18,17 @@ this.searchGIF = function(searchTerm) {
   });
 }
 
-
+this.favoriteThisGIF = function(favGIF) {
+  return $http({
+    method: 'POST',
+    url: '/favorite',
+    data: favGIF
+  }).then(function(response) {
+    console.log('post success', response);
+  }).catch(function(error) {
+    console.log('post error', error);
+  });
+}
 
 
 

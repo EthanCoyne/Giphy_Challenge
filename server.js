@@ -2,14 +2,79 @@ var express = require('express');
 // var index = require('./routes/index');
 var path = require('path');
 var app = express();
+var bodyParser = require('body-parser');
+var pg = require('pg');
+var config = {database: 'favorite_gifs'}
+var pool = new pg.Pool(config);
 
 
 app.use(express.static('public'));
+app.use(bodyParser.json());
 // app.use('/', index);
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'public', 'views', 'index.html'));
 });
+
+app.post('/favorite',function(req,res){
+  console.log('req.body:',req.body);
+  pool.connect(function(err,client,done){
+    if(err){
+      console.log('error connecting to DB',err);
+      res.sendStatus(500);
+      done();
+    } else {
+
+     client.query(
+      'INSERT INTO favorites (comment, url) values($1,$2) returning *;',
+      [req.body.comment, req.body.url],
+      function(err,result){
+        done();
+        if(err){
+          console.log('error querying db',err);
+          res.sendStatus(500);
+        } else {
+          console.log('posted info from db',result.rows);
+          res.send(result.rows);
+        }
+      });
+    }
+  });
+});//end of post
+
+
+
+
+
+
+app.get('/favorite',function(req,res){
+  pool.connect(function(err,client,done){
+    if(err){
+      console.log('error connecting to DB',err);
+      res.sendStatus(500);
+      done();
+    } else {
+     client.query(
+       'SELECT * FROM favorites;',
+      function(err,result){
+        done();
+        if(err){
+          console.log('error querying db',err);
+          res.sendStatus(500);
+        } else {
+          console.log('posted info from db',result.rows);
+          res.send(result.rows);
+        }
+      });
+    }
+  });
+});//end of get
+
+
+
+
+
+
 
 app.listen(process.env.PORT || 3000);
 // var server = app.listen(port, function() {
