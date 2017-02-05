@@ -18,3 +18,10 @@ body {
 .invalid {
   color: darkred;
 }
+
+li {
+  list-style: none;
+}
+.favoriteForm {
+  width: 200px:
+}

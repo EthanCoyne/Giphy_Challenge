@@ -1,6 +1,6 @@
 app.service('GiphyService', function($http) {
   var API = "https://api.giphy.com/v1/";
-  var params = {params: {api_key: 'dc6zaTOxFJmzC'}};
+  var params = {params: {api_key: 'dc6zaTOxFJmzC', limit: "5"}};
 
 
   this.randomGIF = function() {
@@ -17,6 +17,8 @@ this.searchGIF = function(searchTerm) {
     return response.data;
   });
 }
+
+
 
 
 
