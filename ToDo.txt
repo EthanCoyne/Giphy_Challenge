@@ -1,0 +1,5 @@
+Giphy Weekend Challenge To DO listen
+
+[x] spawn like and comment field with each gif
+[x] log gif url and comment on favorite click
+[x] create a favorites view in page

@@ -1,9 +1,25 @@
 var app = angular.module('giphyApp', ['ngRoute']);
 
+//pages routes
+app.config(function($routeProvider, $locationProvider) {
+  $routeProvider.when('/', {
+    templateUrl: '/views/pages/main.html',
+    controller: 'giphyController as giphyCtrl'
+  }).when('/favorites', {
+    templateUrl: '/views/pages/favorites.html',
+    controller: 'giphyController as giphyCtrl'
+  });
+    $locationProvider.html5Mode(true);
+}); // end app.config
 
 
 
 
+
+
+
+
+  //controller getting gifs from Giphy API
 app.controller('giphyController', function(GiphyService){
   console.log("giphyController Loaded");
   // GET to retrieve favorites from database could go here
@@ -32,4 +48,11 @@ app.controller('giphyController', function(GiphyService){
     });
   }
 
-});
+  ctrl.favoriteThisGIF = function(favComment, gifUrl) {
+    ctrl.favGIF = {
+      'comment': favComment,
+      'url': gifUrl
+    }
+    console.log("favorited object: ", ctrl.favGIF);
+  }
+}); // end giphyController
