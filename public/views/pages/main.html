@@ -1,8 +1,8 @@
 <button ng-click="giphyCtrl.randomGIF()">Random!</button><br/>
 <div>
 <img ng-show="giphyCtrl.randomImageURL" ng-src="{{giphyCtrl.randomImageURL}}" alt="A Random Gif"><br>
-<input ng-show="giphyCtrl.randomImageURL" class="favoriteForm" ng-model="giphyCtrl.favComment" placeholder="Why this GIF?"><br />
-<button ng-show="giphyCtrl.randomImageURL" data-id=$index ng-click="giphyCtrl.favoriteThisGIF(giphyCtrl.favComment, giphyCtrl.randomImageURL)">Favorite this GIF</button>
+<input ng-show="giphyCtrl.randomImageURL" class="favoriteForm" ng-model="giphyCtrl.favRandomComment" placeholder="Why this GIF?"><br />
+<button ng-show="giphyCtrl.randomImageURL"  ng-click="giphyCtrl.favoriteThisGIF(giphyCtrl.favRandomComment, giphyCtrl.randomImageURL)">Favorite this GIF</button>
 </div>
 <br><br>
 

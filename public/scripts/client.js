@@ -27,8 +27,21 @@ app.controller('giphyController', function(GiphyService){
 
 
   var ctrl = this;
+
+  //empty object to send to database, once defined in ctrl.favoriteThisGIF();
   ctrl.favGIF = {};
-  ctrl.favoriteGIFs= [];
+  // storing randomImageURL on page load
+  ctrl.randomImageURL = '';
+  //global # of favorites counter
+  ctrl.favCount = 0;
+
+
+
+
+
+
+console.log('# of favorites on page load: ', ctrl.favCount);
+
   // ctrl.searchTerm = '';
 
 
@@ -40,6 +53,9 @@ app.controller('giphyController', function(GiphyService){
         console.log('img URL: ', ctrl.randomImageURL);
       });
   };
+  //grabs random gif on page load
+  ctrl.randomGIF();
+
 
 //calls the giphyservice to search for a gif
   ctrl.searchGIF = function(searchTerm){
@@ -57,15 +73,28 @@ app.controller('giphyController', function(GiphyService){
       'comment': favComment,
       'url': gifUrl
     }
-    //pushing saved gif to array, may not need
-    ctrl.favoriteGIFs.push(ctrl.favGIF);
+    // pushing saved gif to array, may not need
+    // ctrl.favoriteGIFs.push(ctrl.favGIF);
     console.log("favorited object: ", ctrl.favGIF);
 
     //sending gif object to GiphyService
     GiphyService.favoriteThisGIF(ctrl.favGIF);
 
   }
+//getting the # of favorites in DB, to display on DOM
+  ctrl.getFavorites = function () {
+    GiphyService.getFavorites().then(function(response) {
+      ctrl.favCount = response.length;
+      console.log('# of CURRENT favorites:', ctrl.favCount);
+    });
+  } // end getFavorites()
+  
+  //grabs # of favorites on page load
+  ctrl.getFavorites();
+
 }); // end giphyController
+
+
 
 
 //controller for /favorites view

@@ -2,6 +2,8 @@ app.service('GiphyService', function($http) {
   var API = "https://api.giphy.com/v1/";
   var params = {params: {api_key: 'dc6zaTOxFJmzC', limit: "1"}};
 
+this.gifList = [];
+
 
   this.randomGIF = function() {
     return $http.get(API + "gifs/random", params).then(function(response) {
@@ -38,6 +40,7 @@ this.getFavorites = function() {
     url: 'favorite/GETfavs',
   }).then(function(response) {
     console.log('success response from GET: ', response.data);
+    this.gifList = response.data;
     return response.data;
   }).catch(function(err) {
       console.log('error from GET  :', err);
