@@ -8,7 +8,7 @@ var pool = new pg.Pool(config);
 var bodyParser = require("body-parser");
 router.use(bodyParser.json());
 
-
+//POST new favorite gif to the DB
 router.post('/favPOST',function(req,res){
   console.log('req.body:',req.body);
   pool.connect(function(err,client,done){
@@ -17,7 +17,7 @@ router.post('/favPOST',function(req,res){
       res.sendStatus(500);
       done();
     } else {
-
+      //SQL query
      client.query(
       'INSERT INTO favorites (comment, url) values($1,$2) returning *;',
       [req.body.comment, req.body.url],
@@ -36,6 +36,7 @@ router.post('/favPOST',function(req,res){
   });
 });//end of post
 
+//GET request to the DB for the list of favorited gifs
 router.get('/GETfavs',function(req,res){
   pool.connect(function(err,client,done){
     if(err){

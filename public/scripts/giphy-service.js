@@ -4,14 +4,14 @@ app.service('GiphyService', function($http) {
 
 this.gifList = [];
 
-
+  //hears the call from client and grabs a random gif from the API
   this.randomGIF = function() {
     return $http.get(API + "gifs/random", params).then(function(response) {
       console.log('gif received: ', response);
       return response.data;
   });
 }
-
+  //accepts the search term from client and grabs corresponding gif from the API
 this.searchGIF = function(searchTerm) {
   params.params.q = searchTerm.split(' ').join('+');
 

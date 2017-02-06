@@ -47,6 +47,7 @@ console.log('# of favorites on page load: ', ctrl.favCount);
 
 
   //API KEYs , { params: { api_key: 'key goes here'}}
+  //request to Giphyservice to grab random gif from DB
   ctrl.randomGIF = function () {
     GiphyService.randomGIF().then(function(gif) {
         ctrl.randomImageURL = gif.data.image_url;
@@ -88,7 +89,7 @@ console.log('# of favorites on page load: ', ctrl.favCount);
       console.log('# of CURRENT favorites:', ctrl.favCount);
     });
   } // end getFavorites()
-  
+
   //grabs # of favorites on page load
   ctrl.getFavorites();
 
@@ -97,7 +98,7 @@ console.log('# of favorites on page load: ', ctrl.favCount);
 
 
 
-//controller for /favorites view
+// Using this controller as a 'Doc ready' on load of favorites view
 app.controller('favoriteController', function(GiphyService) {
   console.log('favoriteController loaded');
 
@@ -114,4 +115,4 @@ app.controller('favoriteController', function(GiphyService) {
 
   favCtrl.getFavorites();
 
-}); // end favCtrl
+}); // end favoriteController

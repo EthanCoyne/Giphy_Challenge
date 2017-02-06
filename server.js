@@ -7,6 +7,7 @@ var pg = require('pg');
 var config = {database: 'favorite_gifs'}
 var pool = new pg.Pool(config);
 var favoriteRouter = require('./routes/favoriteRouter')
+//I may not need all of these ^^, but i'm too afraid to remove any of them :/. I think I do though
 
 
 app.use(express.static('public'));
@@ -18,21 +19,6 @@ app.use('/favorite', favoriteRouter);
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'public', 'views', 'index.html'));
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
