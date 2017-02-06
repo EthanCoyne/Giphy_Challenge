@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Favorite GIFs</title>
-  </head>
-  <body>
-    <h1>Favorites</h1>
-
-  </body>
-</html>
+  <h1>Favorites</h1>
+  <ul>
+    <li ng-repeat="gif in giphyCtrl.favoriteGIFs">
+      <img ng-src="{{gif.url}}" alt="">
+      <p>{{gif.comment}}</p>
+    </li>
+  </ul>

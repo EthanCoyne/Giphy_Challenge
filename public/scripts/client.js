@@ -22,12 +22,13 @@ app.config(function($routeProvider, $locationProvider) {
   //controller getting gifs from Giphy API
 app.controller('giphyController', function(GiphyService){
   console.log("giphyController Loaded");
-  // GET to retrieve favorites from database could go here
+
 
 
 
   var ctrl = this;
   ctrl.favGIF = {};
+  ctrl.favoriteGIFs= [];
   // ctrl.searchTerm = '';
 
 
@@ -54,6 +55,7 @@ app.controller('giphyController', function(GiphyService){
       'comment': favComment,
       'url': gifUrl
     }
+    ctrl.favoriteGIFs.push(ctrl.favGIF);
     console.log("favorited object: ", ctrl.favGIF);
 
     GiphyService.favoriteThisGIF(ctrl.favGIF);

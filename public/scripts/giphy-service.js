@@ -21,14 +21,17 @@ this.searchGIF = function(searchTerm) {
 this.favoriteThisGIF = function(favGIF) {
   return $http({
     method: 'POST',
-    url: '/favorite',
+    url: '/favorite/favPOST',
     data: favGIF
   }).then(function(response) {
+    return response;
     console.log('post success', response);
   }).catch(function(error) {
     console.log('post error', error);
   });
 }
+
+
 
 
 
