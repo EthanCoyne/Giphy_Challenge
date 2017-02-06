@@ -79,14 +79,19 @@ console.log('# of favorites on page load: ', ctrl.favCount);
     console.log("favorited object: ", ctrl.favGIF);
 
     //sending gif object to GiphyService
-    GiphyService.favoriteThisGIF(ctrl.favGIF);
+    GiphyService.favoriteThisGIF(ctrl.favGIF).then(function() {
+        ctrl.getFavorites();
+    });
+
+
+
 
   }
 //getting the # of favorites in DB, to display on DOM
   ctrl.getFavorites = function () {
     GiphyService.getFavorites().then(function(response) {
       ctrl.favCount = response.length;
-      console.log('# of CURRENT favorites:', ctrl.favCount);
+      console.log('# of CURRENT favorites: ', ctrl.favCount);
     });
   } // end getFavorites()
 

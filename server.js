@@ -12,7 +12,7 @@ var favoriteRouter = require('./routes/favoriteRouter')
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
-// app.use('/', index);
+app.use('/*', index);
 
 app.use('/favorite', favoriteRouter);
 
