@@ -28,28 +28,7 @@ app.get('/', function (req, res) {
 
 
 
-app.get('/favorite',function(req,res){
-  pool.connect(function(err,client,done){
-    if(err){
-      console.log('error connecting to DB', err);
-      res.sendStatus(500);
-      done();
-    } else {
-     client.query(
-       'SELECT * FROM favorites;',
-      function(err,result){
-        done();
-        if(err){
-          console.log('error querying db',err);
-          res.sendStatus(500);
-        } else {
-          console.log('posted info from db',result.rows);
-          res.send(result.rows);
-        }
-      });
-    }
-  });
-});//end of get
+
 
 
 

@@ -17,7 +17,7 @@ this.searchGIF = function(searchTerm) {
     return response.data;
   });
 }
-
+//sends object from client to favoriteRouter in order to POST to DB
 this.favoriteThisGIF = function(favGIF) {
   return $http({
     method: 'POST',
@@ -29,7 +29,20 @@ this.favoriteThisGIF = function(favGIF) {
   }).catch(function(error) {
     console.log('post error', error);
   });
-}
+} // end favoriteThisGIF()
+
+//passes on call from client to favoriteRouter in order to GET favgifs from DB
+this.getFavorites = function() {
+  return $http({
+    method: 'GET',
+    url: 'favorite/GETfavs',
+  }).then(function(response) {
+    console.log('success response from GET: ', response.data);
+    return response.data;
+  }).catch(function(err) {
+      console.log('error from GET  :', err);
+    });
+} // end getFavorites()
 
 
 

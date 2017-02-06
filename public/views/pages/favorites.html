@@ -1,7 +1,13 @@
+<body ng-controller="favoriteController as favCtrl">
+
+
   <h1>Favorites</h1>
   <ul>
-    <li ng-repeat="gif in giphyCtrl.favoriteGIFs">
-      <img ng-src="{{gif.url}}" alt="">
-      <p>{{gif.comment}}</p>
+    <div class="">
+    <li ng-repeat="gifs in favCtrl.favGifList">
+      <img ng-src="{{gifs.url}}" alt="">
+      <p>{{gifs.comment}}</p><br/><br/>
     </li>
+  </div>
   </ul>
+</body>
